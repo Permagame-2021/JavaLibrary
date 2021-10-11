@@ -6,20 +6,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Player {
     private String name;
+    private String group;
+    private boolean priority;
     private double score;
     private double contributionRatio;
     private double scoreIncrease;
     private double bestScoreIncrease;
-    private String agency;
 
     @JsonCreator
-    public Player(@JsonProperty("name") String name, @JsonProperty("score")double score, @JsonProperty("contributionRatio")double contributionRatio, @JsonProperty("scoreIncrease")double scoreIncrease, @JsonProperty("bestScoreIncrease")double bestScoreIncrease, @JsonProperty("agency")String agency) {
+    public Player(@JsonProperty("name")String name, @JsonProperty("score")double score, @JsonProperty("contributionRatio")double contributionRatio, @JsonProperty("scoreIncrease")double scoreIncrease, @JsonProperty("bestScoreIncrease")double bestScoreIncrease, @JsonProperty("group")String group, @JsonProperty("priority")boolean priority) {
         this.name = name;
         this.score = score;
         this.contributionRatio = contributionRatio;
         this.scoreIncrease = scoreIncrease;
         this.bestScoreIncrease = bestScoreIncrease;
-        this.agency = agency;
+        this.group = group;
+        this.priority =priority;
     }
 
     public String getName() {
@@ -42,15 +44,24 @@ public class Player {
         return bestScoreIncrease;
     }
 
+    public String getGroup() {
+        return group;
+    }
+
+    public boolean isPriority() {
+        return priority;
+    }
+
     @Override
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
+                ", group='" + group + '\'' +
+                ", priority=" + priority +
                 ", score=" + score +
                 ", contributionRatio=" + contributionRatio +
                 ", scoreIncrease=" + scoreIncrease +
                 ", bestScoreIncrease=" + bestScoreIncrease +
-                ", agency='" + agency + '\'' +
                 '}';
     }
 }
